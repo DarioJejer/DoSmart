@@ -1,16 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DoSmart.Models;
+using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace DoSmart.Controllers
 {
     public class HomeController : Controller
     {
+        public ApplicationDbContext _context;
+
+        public HomeController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
         public ActionResult Index()
         {
-            return View();
+            var activities = _context.Activities.Include(a => a.Creator).ToList();
+            return View(activities);
         }
 
         public ActionResult About()
