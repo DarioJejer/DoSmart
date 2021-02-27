@@ -1,0 +1,20 @@
+﻿@model DoSmart.ViewModels.ActivityFormViewModel
+@{
+    ViewBag.Title = @Model.PageHeader;
+}
+
+<h2>@Model.PageHeader</h2>
+
+@using (Html.BeginForm("Create", "Activities"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Title)
+        @Html.TextBoxFor(m => m.Title, new { @class = "form-control", autofocus = "autofocus" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Content)
+        @Html.TextBoxFor(m => m.Content, new { @class = "form-control"})
+    </div>
+    @Html.HiddenFor(m => m.Id)
+    <button type="submit" class="btn btn-primary">Save</button>
+}
