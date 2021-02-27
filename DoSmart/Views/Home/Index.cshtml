@@ -6,15 +6,18 @@
 <ul>
     @foreach (var activitie in Model)
     {
-    <li>
-        @activitie.Creator.Name
-    </li>
-    <li>
-        @activitie.Title
-    </li>
-    <li>
-        @activitie.Content
-    </li>
+        if (!activitie.Done)
+        {
+        <li>
+            @activitie.Creator.Name
+        </li>
+        <li>
+            @activitie.Title
+        </li>
+        <li>
+            @activitie.Content
+        </li>
+        }
 
     }
 </ul>
