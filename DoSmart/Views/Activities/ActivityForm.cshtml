@@ -13,8 +13,13 @@
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Content)
-        @Html.TextBoxFor(m => m.Content, new { @class = "form-control"})
+        @Html.TextBoxFor(m => m.Content, new { @class = "form-control" })
     </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ImportanceCategoryId)
+        @Html.DropDownListFor(m => m.ImportanceCategoryId, new SelectList(Model.ImportanceCategories, "Id", "Name"), "", new { @class = "form-control" })
+    </div>
+
     @Html.HiddenFor(m => m.Id)
     <button type="submit" class="btn btn-primary">Save</button>
 }
