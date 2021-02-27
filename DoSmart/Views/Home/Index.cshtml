@@ -5,15 +5,16 @@
 
 <h2>To do Activities:</h2>
 <ul>
-    @foreach (var activitie in Model)
+    @foreach (var activity in Model)
      {
-        if (!activitie.Done)
+        if (!activity.Done)
         {
             <li>
-                <h3>@activitie.Title</h3>
-                @activitie.Creator.Name           
-                <p>@activitie.Content</p>
-                <a href="@Url.Action("Edit", "Activities", new { id = activitie.Id})">Edit</a>
+                <h3>@activity.Title</h3>
+                @activity.Creator.Name           
+                <p>@activity.Content</p>
+                <a href="@Url.Action("Edit", "Activities", new { id = activity.Id})">Edit</a> |
+                <a href="#" class="js-delete-activity" data-activity-id="@activity.Id">Cancel</a>
             </li>
         }
      }
@@ -21,15 +22,58 @@
 
 <h2>Done Activities:</h2>
 <ul>
-    @foreach (var activitie in Model)
+    @foreach (var activity in Model)
      {
-        if (activitie.Done)
+        if (activity.Done)
         {
             <li>
-                <h3>@activitie.Title</h3>
-                @activitie.Creator.Name
-                <p>@activitie.Content</p>
+                <h3>@activity.Title</h3>
+                @activity.Creator.Name
+                <p>@activity.Content</p>
             </li>
         }
      }
 </ul>
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $(".js-delete-activity").click(function (e) {
+                var link = $(e.target);
+                bootbox.dialog({
+                    title: 'Confirm',
+                    message: "Are you sure you want to delete this activity?",
+                    buttons: {
+                        cancel: {
+                            label: "No",
+                            className: 'btn-default',
+                            callback: function () {
+                                bootbox.hideAll();
+                            }
+                        },
+                        ok: {
+                            label: "Yes",
+                            className: 'btn-danger',
+                            callback: function () {
+                                $.ajax({
+                                    url: "/api/activities/" + link.attr("data-activity-id"),
+                                    method: "DELETE"
+                                })
+                                    .done(function () {
+                                        link.parents("li").fadeOut(function () {
+                                            $(this).remove();
+                                        });
+                                    })
+                                    .fail(function () {
+                                        alert("Something failed!");
+                                    });
+                            }
+                        }
+                    }
+                })
+            })
+        })
+    </script>
+}
