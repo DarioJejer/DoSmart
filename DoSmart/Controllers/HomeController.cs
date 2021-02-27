@@ -1,4 +1,5 @@
 ﻿using DoSmart.Models;
+using Microsoft.AspNet.Identity;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
@@ -16,8 +17,11 @@ namespace DoSmart.Controllers
 
         public ActionResult Index()
         {
+            var userId = User.Identity.GetUserId();
             var activities = _context.Activities
                 .Include(a => a.Creator)
+                .Include(a => a.ImportanceCategory)
+                .Where(a => a.CreatorId == userId)
                 .OrderByDescending(a => a.ImportanceCategoryId)
                 .ToList();
             return View(activities);

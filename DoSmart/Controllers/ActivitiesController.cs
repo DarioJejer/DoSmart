@@ -16,7 +16,7 @@ namespace DoSmart.Controllers
 
         public ApplicationDbContext _context { get; set; }
 
-
+        [Authorize]
         public ActionResult Create()
         {
             var viewModel = new ActivityFormViewModel();
@@ -24,6 +24,7 @@ namespace DoSmart.Controllers
             viewModel.PageHeader = "Add an Activity";
             return View("ActivityForm",viewModel);
         }
+        [Authorize]
         [HttpPost]
         public ActionResult Create(ActivityFormViewModel viewModel)
         {
