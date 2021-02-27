@@ -16,7 +16,10 @@ namespace DoSmart.Controllers
 
         public ActionResult Index()
         {
-            var activities = _context.Activities.Include(a => a.Creator).ToList();
+            var activities = _context.Activities
+                .Include(a => a.Creator)
+                .OrderByDescending(a => a.ImportanceCategoryId)
+                .ToList();
             return View(activities);
         }
 
