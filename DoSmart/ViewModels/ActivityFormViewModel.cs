@@ -13,6 +13,7 @@ namespace DoSmart.ViewModels
         [Display(Name = "Importance")]
         public byte ImportanceCategoryId { get; set; }
         public IEnumerable<ImportanceCategory> ImportanceCategories { get; set; }
+        public string Action { get; set; }
         public string PageHeader { get; set; }
 
     }

@@ -13,6 +13,7 @@
                 <h3>@activitie.Title</h3>
                 @activitie.Creator.Name           
                 <p>@activitie.Content</p>
+                <a href="@Url.Action("Edit", "Activities", new { id = activitie.Id})">Edit</a>
             </li>
         }
      }
