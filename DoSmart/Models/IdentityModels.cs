@@ -7,6 +7,7 @@ namespace DoSmart.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Activity> Activities { get; set; }
+        public DbSet<ImportanceCategory> ImportanceCategories { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
