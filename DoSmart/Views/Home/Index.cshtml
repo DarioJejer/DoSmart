@@ -3,37 +3,44 @@
     ViewBag.Title = "Home Page";
 }
 
-<h2>To do Activities:</h2>
-<ul>
-    @foreach (var activity in Model)
-     {
-        if (!activity.Done)
-        {
-            <li>
-                <h3>@activity.Title</h3>
-                @activity.Creator.Name           
-                <p>@activity.Content</p>
-                <a href="@Url.Action("Edit", "Activities", new { id = activity.Id})">Edit</a> |
-                <a href="#" class="js-delete-activity" data-activity-id="@activity.Id">Cancel</a>
-            </li>
-        }
-     }
-</ul>
+<section class="banner">    
+    <div class="details">
+        <h2>To do Activities:</h2>
+        <section class="subtasks">
+            <ul>
+                @foreach (var activity in Model)
+                    {
+                    if (!activity.Done)
+                    {
+                        <li>
+                            <h3>@activity.Title</h3>
+                            @activity.Creator.Name           
+                            <p>@activity.Content</p>
+                            <a href="@Url.Action("Edit", "Activities", new { id = activity.Id})">Edit</a> |
+                            <a href="#" class="js-delete-activity" data-activity-id="@activity.Id">Delete</a>
+                        </li>
+                    }
+                    }
+            </ul>
+        </section>
 
-<h2>Done Activities:</h2>
-<ul>
-    @foreach (var activity in Model)
-     {
-        if (activity.Done)
-        {
-            <li>
-                <h3>@activity.Title</h3>
-                @activity.Creator.Name
-                <p>@activity.Content</p>
-            </li>
-        }
-     }
-</ul>
+        <h2>Done Activities:</h2>
+        <ul>
+            @foreach (var activity in Model)
+                {
+                if (activity.Done)
+                {
+                    <li>
+                        <h3>@activity.Title</h3>
+                        @activity.Creator.Name
+                        <p>@activity.Content</p>
+                        <a href="#" class="js-delete-activity" data-activity-id="@activity.Id">Delete</a>
+                    </li>
+                }
+                }
+        </ul>
+    </div>
+</section>
 
 
 @section scripts

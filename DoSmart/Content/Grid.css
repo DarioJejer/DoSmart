@@ -1,0 +1,24 @@
+﻿
+.subtasks {
+    padding: 2rem;
+}
+
+    .subtasks > ul {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        grid-gap: 2rem;
+        list-style-type: none;
+        margin-left: -40px;
+    }
+        
+        .subtasks > ul > li {
+            border: 1px solid #E2E2E2;
+            border-radius: 1rem;
+            padding-left: 10px;
+            padding-bottom: 10px;
+        }
+
+            .subtasks > ul > li > h3 {
+                font-family: 'Playfair Display', serif;
+                margin-top: 10px;
+            }
