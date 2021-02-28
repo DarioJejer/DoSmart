@@ -22,3 +22,8 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.container {
+    min-width: 1200px;
+    width: auto !important; /* Firefox will set width as auto */
+}
