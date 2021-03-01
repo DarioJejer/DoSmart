@@ -27,13 +27,14 @@
                     {
                         <li>
                             <h4>@activity.Title</h4>
-                            <icon> </icon>
                             <button class="delete-button js-delete-activity" data-activity-id="@activity.Id">X</button>
+                            <form action="Activities/Edit/@activity.Id">
+                                <button class="edit-button js-edit-activity" type="submit">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                </button>
+                            </form>
                             @activity.Creator.Name           
                             <p>@activity.Content</p>
-                            <div class="action-buttons">
-                                <a href="@Url.Action("Edit", "Activities", new { id = activity.Id})">Edit</a>
-                            </div>
                         </li>
                     }
                     }
@@ -48,6 +49,7 @@
                     {
                         <li>
                             <h4>@activity.Title</h4>
+                            <button class="delete-button js-delete-activity" data-activity-id="@activity.Id">X</button>
                             @activity.Creator.Name
                             <p>@activity.Content</p>
                             <div class="action-buttons"><a href="#" class="js-delete-activity" data-activity-id="@activity.Id">Delete</a></div>

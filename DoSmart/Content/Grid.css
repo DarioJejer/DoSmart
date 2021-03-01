@@ -15,7 +15,7 @@
 
     .subtasks > ul {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
+        grid-template-columns: repeat(auto-fit, minmax(250px, 305px));
         grid-gap: 2rem;
         list-style-type: none;
         margin-left: -40px;
@@ -26,14 +26,15 @@
             border: 1px solid #000000;
             border-radius: 1rem;
             padding-left: 10px;
-            padding-right: 30px;
-            padding-bottom: 30px;
+            padding-right: 70px;
+            padding-bottom: 10px;
             position: relative;
         }
 
             .subtasks > ul > li > h4 {
                 margin-top: 10px;
             }
+
             .subtasks > ul > li > .delete-button {
                 position: absolute;
                 right: 8px;
@@ -41,6 +42,16 @@
                 border-radius: 8px;
                 background-color: #808080;
             }
+
+            .subtasks > ul > li > form > .edit-button {
+                position: absolute;
+                right: 40px;
+                top: 5px;
+                border-radius: 8px;
+                background-color: #808080;
+            }
+
+
 
 
 .activities {
