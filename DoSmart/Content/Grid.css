@@ -26,7 +26,6 @@
             border: 1px solid #000000;
             border-radius: 1rem;
             padding-left: 10px;
-            padding-right: 70px;
             padding-bottom: 10px;
             position: relative;
         }
@@ -35,9 +34,17 @@
                 margin-top: 10px;
             }
 
+            .subtasks > ul > li .importance-icon {
+                position: absolute;
+                right: 65px;
+                top: 5px;
+                background-color: #808080;
+                border: none;
+            }
+
             .subtasks > ul > li > .delete-button {
                 position: absolute;
-                right: 8px;
+                right: 5px;
                 top: 5px;
                 border-radius: 8px;
                 background-color: #808080;
@@ -45,11 +52,12 @@
 
             .subtasks > ul > li > form > .edit-button {
                 position: absolute;
-                right: 40px;
+                right: 35px;
                 top: 5px;
                 border-radius: 8px;
                 background-color: #808080;
             }
+
 
 
 

@@ -26,7 +26,10 @@
                     if (!activity.Done)
                     {
                         <li>
-                            <h4>@activity.Title</h4>
+                            <div style="max-width: 200px;"><h4>@activity.Title</h4></div>
+                            <button class=" importance-icon">
+                                <i class="bi bi-exclamation-circle-fill" style="font-size: 2rem; color: #923a3a;"></i>
+                            </button>
                             <button class="delete-button js-delete-activity" data-activity-id="@activity.Id">X</button>
                             <form action="Activities/Edit/@activity.Id">
                                 <button class="edit-button js-edit-activity" type="submit">
@@ -52,7 +55,6 @@
                             <button class="delete-button js-delete-activity" data-activity-id="@activity.Id">X</button>
                             @activity.Creator.Name
                             <p>@activity.Content</p>
-                            <div class="action-buttons"><a href="#" class="js-delete-activity" data-activity-id="@activity.Id">Delete</a></div>
                         </li>
                     }
                 }
