@@ -28,14 +28,14 @@
                         <li>
                             <div style="max-width: 200px;"><h4>@activity.Title</h4></div>
                             <button class=" importance-icon">
-                                <i class="bi bi-exclamation-circle-fill" style="font-size: 2rem; color: #923a3a;"></i>
+                                <i class="bi bi-exclamation-circle-fill" style="font-size: 2rem; color: @activity.GetImportanceColor();"></i>
                             </button>
-                            <button class="delete-button js-delete-activity" data-activity-id="@activity.Id">X</button>
                             <form action="Activities/Edit/@activity.Id">
                                 <button class="edit-button js-edit-activity" type="submit">
                                     <span class="glyphicon glyphicon-pencil"></span>
                                 </button>
                             </form>
+                            <button class="delete-button js-delete-activity" data-activity-id="@activity.Id">X</button>
                             @activity.Creator.Name           
                             <p>@activity.Content</p>
                         </li>
