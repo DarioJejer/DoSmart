@@ -1,39 +1,51 @@
 ﻿
 .content {
+    margin-left: -15px;
     display: grid;
     grid-template-columns: 250px 1fr;
     grid-gap: .5rem;
-    align-items: start;
+    min-height: 600px;
+    /*align-items: start;*/
 }
 
 .subtasks {
     padding: 2rem;
+    color:white;
 }
 
     .subtasks > ul {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
         grid-gap: 2rem;
         list-style-type: none;
         margin-left: -40px;
     }
-        
+
         .subtasks > ul > li {
-            border: 1px solid #E2E2E2;
+            background-color: #808080;
+            border: 1px solid #000000;
             border-radius: 1rem;
             padding-left: 10px;
-            padding-bottom: 10px;
+            padding-right: 30px;
+            padding-bottom: 30px;
+            position: relative;
         }
 
-            .subtasks > ul > li > h3 {
-                font-family: 'Playfair Display', serif;
+            .subtasks > ul > li > h4 {
                 margin-top: 10px;
+            }
+            .subtasks > ul > li > .delete-button {
+                position: absolute;
+                right: 8px;
+                top: 5px;
+                border-radius: 8px;
+                background-color: #808080;
             }
 
 
 .activities {
     display: grid;
-    grid-template-rows: 50px auto;
+    grid-template-rows: auto;
     grid-gap: .5rem;
     margin: .5rem 0;
     list-style-type: none;
@@ -48,6 +60,18 @@
     }
 
 .banner {
-    background-color: orangered;
+    margin-left: -15px;
+    background-color: #777777;
+    grid-row-start: 1;
+    grid-row-end: last-line;
+}
+
+.banner-header {
+    text-align: center;
+}
+
+ul > li > .action-buttons {
+    position: absolute;
+    bottom: 10px;
 }
 
