@@ -5,17 +5,16 @@
     grid-template-columns: 250px 1fr;
     grid-gap: .5rem;
     min-height: 600px;
-    /*align-items: start;*/
+    color: white;
 }
 
 .subtasks {
     padding: 2rem;
-    color:white;
 }
 
     .subtasks > ul {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 305px));
+        grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
         grid-gap: 2rem;
         list-style-type: none;
         margin-left: -40px;
@@ -36,51 +35,68 @@
 
             .subtasks > ul > li .importance-icon {
                 position: absolute;
-                right: 65px;
+                right: 67px;
                 top: 5px;
                 background-color: #808080;
                 border: none;
+
             }
 
-            .subtasks > ul > li > .delete-button {
-                position: absolute;
-                right: 5px;
-                top: 5px;
-                border-radius: 8px;
-                background-color: #808080;
-            }
+                .subtasks > ul > li .importance-icon:focus {
+                    outline: none;
+                }
 
             .subtasks > ul > li > form > .edit-button {
                 position: absolute;
-                right: 35px;
-                top: 5px;
+                right: 40px;
+                top: 7px;
                 border-radius: 8px;
                 background-color: #808080;
+                border: 1px;
+                border-color: #000000;
+                box-shadow: 0 0 8px rgba(0, 0, 0, 0.60);
             }
 
+                .subtasks > ul > li > form > .edit-button:focus {
+                    background-color: black;
+                    outline: none;
+                }
 
+            .subtasks > ul > li > .delete-button {
+                position: absolute;
+                right: 7px;
+                top: 7px;
+                border-radius: 8px;
+                background-color: #808080;
+                border: 1px;
+                border-color: #000000;
+                box-shadow: 0 0 8px rgba(0, 0, 0, 0.60);
+            }
 
+                .subtasks > ul > li > .delete-button:focus {
+                    background-color: black;
+                    outline: none;
+                }
 
 
 .activities {
     display: grid;
     grid-template-rows: auto;
-    grid-gap: .5rem;
+    grid-gap: 1rem;
     margin: .5rem 0;
     list-style-type: none;
-    padding: .5rem;
+    padding: 1rem;
 }
 
     .activities > li {
-        background-color: white;
-        border-radius: .25rem;
-        box-shadow: 0 1px 0 rgba(9,45,66,.25);
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.60);
+        border-radius: .5rem;
         padding: .5rem;
     }
 
 .banner {
     margin-left: -15px;
-    background-color: #777777;
+    background-color: #4b4b4b;
     grid-row-start: 1;
     grid-row-end: last-line;
 }

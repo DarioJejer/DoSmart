@@ -22,7 +22,7 @@ namespace DoSmart.Models
                 case 3:
                     return "#ffd800";
                 case 4:
-                    return "#ff6a00";
+                    return "#f97d24";
                 default:
                     return "white";
             }

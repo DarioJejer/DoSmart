@@ -6,14 +6,14 @@
 <section class="content">    
     <div class="banner">
 
-        <div class="banner-header"><h3>Proyectos</h3></div>
+        <div class="banner-header"><h3>Proyects</h3></div>
 
         <ul class="activities">
             <li>
-                Primera Actividad
+                Develop Models
             </li>
             <li>
-                Segunda Actividad
+                Implement Front End
             </li>
         </ul>
     </div>
@@ -26,17 +26,18 @@
                     if (!activity.Done)
                     {
                         <li>
-                            <div style="max-width: 200px;"><h4>@activity.Title</h4></div>
-                            <button class=" importance-icon">
+                            <h4 style="max-width: 200px;">@activity.Title</h4>
+                            <button class="importance-icon">
                                 <i class="bi bi-exclamation-circle-fill" style="font-size: 2rem; color: @activity.GetImportanceColor();"></i>
                             </button>
                             <form action="Activities/Edit/@activity.Id">
                                 <button class="edit-button js-edit-activity" type="submit">
-                                    <span class="glyphicon glyphicon-pencil"></span>
+                                    <i class="bi bi-three-dots"></i>
                                 </button>
                             </form>
-                            <button class="delete-button js-delete-activity" data-activity-id="@activity.Id">X</button>
-                            @activity.Creator.Name           
+                            <button class="delete-button js-delete-activity" data-activity-id="@activity.Id">
+                                <i class="bi bi-x"></i>
+                            </button>
                             <p>@activity.Content</p>
                         </li>
                     }
