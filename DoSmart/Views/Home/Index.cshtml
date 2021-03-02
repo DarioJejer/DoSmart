@@ -8,14 +8,21 @@
 
         <div class="banner-header"><h3>Proyects</h3></div>
 
-        <ul class="activities">
+        <ul class="proyects">
             <li>
                 Develop Models
+                <button class="delete-button js-delete-proyect">
+                    <i class="bi bi-x"></i>
+                </button>
             </li>
             <li>
                 Implement Front End
+                <button class="delete-button js-delete-proyect">
+                    <i class="bi bi-x"></i>
+                </button>
             </li>
         </ul>
+        <a href="activities/create"><i class="bi bi-plus-circle"></i></a>
     </div>
     <div class="details">
         <section class="subtasks">
@@ -53,7 +60,9 @@
                     {
                         <li>
                             <h4>@activity.Title</h4>
-                            <button class="delete-button js-delete-activity" data-activity-id="@activity.Id">X</button>
+                            <button class="delete-button js-delete-activity" data-activity-id="@activity.Id">
+                                <i class="bi bi-x"></i>
+                            </button>
                             @activity.Creator.Name
                             <p>@activity.Content</p>
                         </li>

@@ -8,6 +8,57 @@
     color: white;
 }
 
+.banner {
+    margin-left: -15px;
+    background-color: #4b4b4b;
+    grid-row-start: 1;
+    grid-row-end: last-line;
+    padding: 0 2rem;
+}
+
+.banner-header {
+    text-align: center;
+}
+
+.banner > a > .bi-plus-circle {
+    color: white;
+    font-size: xx-large;
+    text-shadow: 0px 0px 15px rgb(0, 0, 0);
+}
+
+.proyects {
+    display: grid;
+    grid-template-rows: auto;
+    grid-gap: 1rem;
+    margin: .5rem 0;
+    list-style-type: none;
+    padding: 1rem 0;
+}
+
+    .proyects > li {
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.60);
+        border-radius: .5rem;
+        padding: .5rem;
+        position: relative;
+        bottom: 10px;
+    }
+
+        .proyects > li > .delete-button {
+            position: absolute;
+            right: 7px;
+            top: 4px;
+            border-radius: 8px;
+            background-color: #4b4b4b;
+            border: 1px;
+            border-color: #000000;
+        }
+
+            .proyects > li > .delete-button:focus {
+                color: black;
+                outline: none;
+            }
+
+
 .subtasks {
     padding: 2rem;
 }
@@ -77,36 +128,4 @@
                     background-color: black;
                     outline: none;
                 }
-
-
-.activities {
-    display: grid;
-    grid-template-rows: auto;
-    grid-gap: 1rem;
-    margin: .5rem 0;
-    list-style-type: none;
-    padding: 1rem;
-}
-
-    .activities > li {
-        box-shadow: 0 0 8px rgba(0, 0, 0, 0.60);
-        border-radius: .5rem;
-        padding: .5rem;
-    }
-
-.banner {
-    margin-left: -15px;
-    background-color: #4b4b4b;
-    grid-row-start: 1;
-    grid-row-end: last-line;
-}
-
-.banner-header {
-    text-align: center;
-}
-
-ul > li > .action-buttons {
-    position: absolute;
-    bottom: 10px;
-}
 
