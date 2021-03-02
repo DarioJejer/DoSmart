@@ -26,14 +26,15 @@
     </div>
     <div class="details">
         <section class="subtasks">
-        <h2>To do Activities</h2>
+            <h2>To do</h2>
+            <hr style="width: 30%; color: black"/>
             <ul>
                 @foreach (var activity in Model)
                     {
                     if (!activity.Done)
                     {
                         <li>
-                            <h4 style="max-width: 200px;">@activity.Title</h4>
+                            <h4>@activity.Title</h4>
                             <button class="importance-icon">
                                 <i class="bi bi-exclamation-circle-fill" style="font-size: 2rem; color: @activity.GetImportanceColor();"></i>
                             </button>
@@ -45,7 +46,7 @@
                             <button class="delete-button js-delete-activity" data-activity-id="@activity.Id">
                                 <i class="bi bi-x"></i>
                             </button>
-                            <hr style="width:90%" />
+                            <hr style="margin: 10px auto" />
                             <p>@activity.Content</p>
                         </li>
                     }
@@ -53,7 +54,8 @@
             </ul>
         </section>
         <section class="subtasks">
-            <h2>Done Activities</h2>
+            <h2>Done</h2>
+            <hr style="width: 30%"/>
             <ul>
                 @foreach (var activity in Model)
                 {
@@ -64,7 +66,7 @@
                             <button class="delete-button js-delete-activity" data-activity-id="@activity.Id">
                                 <i class="bi bi-x"></i>
                             </button>
-                            <hr style="width:90%" />
+                            <hr style="margin: 10px auto" />
                             <p>@activity.Content</p>
                         </li>
                     }
