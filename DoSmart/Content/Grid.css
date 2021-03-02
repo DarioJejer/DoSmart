@@ -73,7 +73,7 @@
 
     .subtasks > ul {
         display: grid;
-        grid-template-columns: repeat(auto-fit, 390px);
+        grid-template-columns: repeat(auto-fit, 395px);
         grid-gap: 2rem;
         list-style-type: none;
         margin-left: -40px;

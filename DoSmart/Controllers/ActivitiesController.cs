@@ -70,7 +70,7 @@ namespace DoSmart.Controllers
                 Content = activity.Content,
                 ImportanceCategoryId = activity.ImportanceCategoryId,
                 ImportanceCategories = _context.ImportanceCategories.ToList(),
-                PageHeader = "Edit an Activity",
+                PageHeader = "Edit Activity",
                 Action = "Edit"
             };
 
