@@ -11,7 +11,7 @@
         {
             <li>
                 <h3>@activity.Title</h3>
-                @activity.Creator.Name           
+                <p>Part of @activity.Project.Title</p>
                 <p>@activity.Content</p>
                 <a href="@Url.Action("Edit", "Activities", new { id = activity.Id})">Edit</a> |
                 <a href="#" class="js-delete-activity" data-activity-id="@activity.Id">Cancel</a>

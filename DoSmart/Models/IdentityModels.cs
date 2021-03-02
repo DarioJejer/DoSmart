@@ -8,6 +8,7 @@ namespace DoSmart.Models
     {
         public DbSet<Activity> Activities { get; set; }
         public DbSet<ImportanceCategory> ImportanceCategories { get; set; }
+        public DbSet<Project> Projects { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

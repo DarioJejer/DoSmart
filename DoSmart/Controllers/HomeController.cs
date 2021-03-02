@@ -21,6 +21,7 @@ namespace DoSmart.Controllers
             var activities = _context.Activities
                 .Include(a => a.Creator)
                 .Include(a => a.ImportanceCategory)
+                .Include(a => a.Project)
                 .Where(a => a.CreatorId == userId)
                 .OrderByDescending(a => a.ImportanceCategoryId)
                 .ToList();
