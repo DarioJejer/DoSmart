@@ -19,10 +19,14 @@ namespace DoSmart.Controllers
         [Authorize]
         public ActionResult Create()
         {
-            var viewModel = new ActivityFormViewModel();
-            viewModel.ImportanceCategories = _context.ImportanceCategories.ToList();
-            viewModel.PageHeader = "Add an Activity";
-            viewModel.Action = "Create";
+            var viewModel = new ActivityFormViewModel()
+            {
+                ImportanceCategories = _context.ImportanceCategories.ToList(),
+                Projects = _context.Projects.ToList(),
+                PageHeader = "Add an Activity",
+                Action = "Create"
+            };
+
             return View("ActivityForm",viewModel);
         }
 
@@ -42,6 +46,7 @@ namespace DoSmart.Controllers
                     Title = viewModel.Title,
                     Content = viewModel.Content,
                     CreatorId = User.Identity.GetUserId(),
+                    ProjectId = viewModel.ProjectId,
                     Date = DateTime.Now,
                     ImportanceCategoryId = viewModel.ImportanceCategoryId
                 };
