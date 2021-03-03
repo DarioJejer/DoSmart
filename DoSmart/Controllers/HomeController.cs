@@ -15,15 +15,14 @@ namespace DoSmart.Controllers
         {
             _context = new ApplicationDbContext();
         }
-
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
             var userId = User.Identity.GetUserId();
             var activities = _context.Activities
                 .Include(a => a.Creator)
                 .Include(a => a.ImportanceCategory)
                 .Include(a => a.Project)
-                .Where(a => a.CreatorId == userId)
+                .Where(a => a.CreatorId == userId && a.ProjectId == id)
                 .OrderByDescending(a => a.ImportanceCategoryId)
                 .ToList();
             var projects = _context.Projects
