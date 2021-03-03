@@ -2,46 +2,79 @@
 @{
     ViewBag.Title = "Home Page";
 }
-<h2>List of Projects</h2>
-<ul>
-    @foreach (var project in Model.Projects)
-    {
-        <li>@project.Title</li>
-    }
-</ul>
 
+<section class="content">    
+    <div class="banner">
 
-<h2>To do Activities:</h2>
-<ul>
-    @foreach (var activity in Model.Activities)
-     {
-        if (!activity.Done)
-        {
+        <div class="banner-header"><h3>Proyects</h3></div>
+
+        <ul class="proyects">
             <li>
-                <h3>@activity.Title</h3>
-                <p>Part of @activity.Project.Title</p>
-                <p>@activity.Content</p>
-                <a href="@Url.Action("Edit", "Activities", new { id = activity.Id})">Edit</a> |
-                <a href="#" class="js-delete-activity" data-activity-id="@activity.Id">Cancel</a>
+                Develop Models
+                <button class="delete-button js-delete-proyect">
+                    <i class="bi bi-x"></i>
+                </button>
             </li>
-        }
-     }
-</ul>
-
-<h2>Done Activities:</h2>
-<ul>
-    @foreach (var activity in Model.Activities)
-     {
-        if (activity.Done)
-        {
             <li>
-                <h3>@activity.Title</h3>
-                @activity.Creator.Name
-                <p>@activity.Content</p>
+                Implement Front End
+                <button class="delete-button js-delete-proyect">
+                    <i class="bi bi-x"></i>
+                </button>
             </li>
-        }
-     }
-</ul>
+        </ul>
+        <a href="activities/create"><i class="bi bi-plus-circle"></i></a>
+    </div>
+    <div class="details">
+        <section class="subtasks">
+            <h2>To do</h2>
+            <hr style="width: 30%; color: black"/>
+            <ul>
+                @foreach (var activity in Model)
+                    {
+                    if (!activity.Done)
+                    {
+                        <li>
+                            <h4>@activity.Title</h4>
+                            <button class="importance-icon">
+                                <i class="bi bi-exclamation-circle-fill" style="font-size: 2rem; color: @activity.GetImportanceColor();"></i>
+                            </button>
+                            <form action="Activities/Edit/@activity.Id">
+                                <button class="edit-button js-edit-activity" type="submit">
+                                    <i class="bi bi-three-dots"></i>
+                                </button>
+                            </form>
+                            <button class="delete-button js-delete-activity" data-activity-id="@activity.Id">
+                                <i class="bi bi-x"></i>
+                            </button>
+                            <hr style="margin: 10px auto" />
+                            <p>@activity.Content</p>
+                        </li>
+                    }
+                    }
+            </ul>
+        </section>
+        <section class="subtasks">
+            <h2>Done</h2>
+            <hr style="width: 30%"/>
+            <ul>
+                @foreach (var activity in Model.Activities)
+                {
+                    if (activity.Done)
+                    {
+                        <li>
+                            <h4>@activity.Title</h4>
+                            <button class="delete-button js-delete-activity" data-activity-id="@activity.Id">
+                                <i class="bi bi-x"></i>
+                            </button>
+                            <hr style="margin: 10px auto" />
+                            <p>@activity.Content</p>
+                        </li>
+                    }
+                }
+            </ul>
+        </section>
+    </div>
+</section>
 
 
 @section scripts
