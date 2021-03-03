@@ -21,8 +21,9 @@
         </ul>
         <a href="/Projects/Create"><i class="bi bi-plus-circle"></i></a>
     </div>
+
     <div class="details">
-        <section class="subtasks">
+        <section class="activities_list">
             <h2>To do</h2>
             <hr style="width: 30%; color: black"/>
             <ul>
@@ -32,7 +33,7 @@
                     {
                         <li>                            
                             <input id="activity-@activity.Id" type="checkbox">
-                            <label for="activity-@activity.Id" class="side-label"></label>
+                            <label for="activity-@activity.Id" class="side-label" data-activity-id="@activity.Id"></label>
                             <h4>@activity.Title</h4>
                             <button class="importance-icon">
                                 <i class="bi bi-exclamation-circle-fill" style="font-size: 2rem; color: @activity.GetImportanceColor();"></i>
@@ -53,15 +54,17 @@
             </ul>
             <a href="/Activities/Create"><i class="bi bi-plus-square"></i></a>
         </section>
-        <section class="subtasks">
+        <section class="activities_list">
             <h2>Done</h2>
             <hr style="width: 30%"/>
-            <ul>
+            <ul id="done-activities">
                 @foreach (var activity in Model.Activities)
                 {
                     if (activity.Done)
                     {
                         <li>
+                            <input id="activity-@activity.Id" type="checkbox" checked>
+                            <label for="activity-@activity.Id" class="side-label" data-activity-id="@activity.Id"></label>
                             <h4>@activity.Title</h4>
                             <button class="delete-button js-delete-activity" data-activity-id="@activity.Id">
                                 <i class="bi bi-x"></i>
@@ -81,6 +84,24 @@
 {
     <script>
         $(document).ready(function () {
+            $(".side-label").click(function (e) {
+                var link = $(e.target);
+                $.ajax({
+                    url: "/api/activities/" + link.attr("data-activity-id"),
+                    method: "PUT"
+                })
+                    .done(function () {
+                        link.parents("li").fadeOut(1000, function () {
+                            $(this).prependTo($("#done-activities"));
+                            $(this).children("form").remove();
+                            $(this).children(".importance-icon").remove();
+                            $(this).fadeTo(500, 0.5);
+                        });
+                    })
+                    .fail(function () {
+                        alert("Something failed!");
+                    })
+            })
             $(".js-delete-activity").click(function (e) {
                 var link = $(e.target);
                 bootbox.dialog({

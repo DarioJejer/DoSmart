@@ -91,16 +91,16 @@
         color: #808080;
     }
 
-.subtasks {
+.activities_list {
     padding: 2rem;
 }
 
-    .subtasks h2 {
+    .activities_list h2 {
         text-align: center;
         text-transform: uppercase;
     }
 
-    .subtasks > ul {
+    .activities_list > ul {
         display: grid;
         grid-template-columns: repeat(auto-fit, 390px);
         grid-gap: 2rem;
@@ -108,7 +108,7 @@
         margin-left: -40px;
     }
 
-        .subtasks > ul > li {
+        .activities_list > ul > li {
             background-color: #808080;
             border: 1px solid #000000;
             border-radius: 1rem;
@@ -159,12 +159,12 @@ input:checked + .side-label::after {
     display: block;
 }
 
-        .subtasks > ul > li > h4 {
+        .activities_list > ul > li > h4 {
             display: inline;
-            margin-right: 90px;            
+            max-width: 200px;            
         }
 
-            .subtasks > ul > li .importance-icon {
+            .activities_list > ul > li .importance-icon {
                 position: absolute;
                 right: 67px;
                 top: 5px;
@@ -173,11 +173,11 @@ input:checked + .side-label::after {
 
             }
 
-                .subtasks > ul > li .importance-icon:focus {
+                .activities_list > ul > li .importance-icon:focus {
                     outline: none;
                 }
 
-            .subtasks > ul > li > form > .edit-button {
+            .activities_list > ul > li > form > .edit-button {
                 position: absolute;
                 right: 40px;
                 top: 7px;
@@ -188,16 +188,16 @@ input:checked + .side-label::after {
                 box-shadow: 0 0 8px rgba(0, 0, 0, 0.60);
             }
 
-                .subtasks > ul > li > form > .edit-button:hover {
+                .activities_list > ul > li > form > .edit-button:hover {
                     background-color: #4b4b4b;
                 }
 
-                .subtasks > ul > li > form > .edit-button:focus {
+                .activities_list > ul > li > form > .edit-button:focus {
                     background-color: black;
                     outline: none;
                 }
 
-            .subtasks > ul > li > .delete-button {
+            .activities_list > ul > li > .delete-button {
                 position: absolute;
                 right: 7px;
                 top: 7px;
@@ -208,14 +208,16 @@ input:checked + .side-label::after {
                 box-shadow: 0 0 8px rgba(0, 0, 0, 0.60);
             }
 
-                .subtasks > ul > li > .delete-button:hover {
+                .activities_list > ul > li > .delete-button:hover {
                     background-color: #4b4b4b;
                 }
 
-                .subtasks > ul > li > .delete-button:focus {
+                .activities_list > ul > li > .delete-button:focus {
                     background-color: black;
                     outline: none;
                 }
 
-    
+#done-activities > li {
+    opacity: 0.5;
+}
 
