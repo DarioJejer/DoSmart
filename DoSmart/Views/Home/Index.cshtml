@@ -8,29 +8,26 @@
 
         <div class="banner-header"><h3>Proyects</h3></div>
 
-        <ul class="proyects">
-            <li>
-                Develop Models
-                <button class="delete-button js-delete-proyect">
-                    <i class="bi bi-x"></i>
-                </button>
-            </li>
-            <li>
-                Implement Front End
-                <button class="delete-button js-delete-proyect">
-                    <i class="bi bi-x"></i>
-                </button>
-            </li>
+        <ul class="proyects_list">
+            @foreach (var project in Model.Projects)
+            {
+                <li>
+                    <a href="/Home/Index/@project.Id">@project.Title</a>
+                    <button class="delete-button js-delete-proyect">
+                        <i class="bi bi-x"></i>
+                    </button>
+                </li>
+            }
         </ul>
-        <a href="activities/create"><i class="bi bi-plus-circle"></i></a>
+        <a href="/Projects/Create"><i class="bi bi-plus-circle"></i></a>
     </div>
     <div class="details">
         <section class="subtasks">
             <h2>To do</h2>
             <hr style="width: 30%; color: black"/>
             <ul>
-                @foreach (var activity in Model)
-                    {
+                @foreach (var activity in Model.Activities)
+                {
                     if (!activity.Done)
                     {
                         <li>
@@ -38,7 +35,7 @@
                             <button class="importance-icon">
                                 <i class="bi bi-exclamation-circle-fill" style="font-size: 2rem; color: @activity.GetImportanceColor();"></i>
                             </button>
-                            <form action="Activities/Edit/@activity.Id">
+                            <form action="/Activities/Edit/@activity.Id">
                                 <button class="edit-button js-edit-activity" type="submit">
                                     <i class="bi bi-three-dots"></i>
                                 </button>
@@ -50,8 +47,9 @@
                             <p>@activity.Content</p>
                         </li>
                     }
-                    }
+                }
             </ul>
+            <a href="/Activities/Create"><i class="bi bi-plus-square"></i></a>
         </section>
         <section class="subtasks">
             <h2>Done</h2>

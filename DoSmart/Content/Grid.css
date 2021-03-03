@@ -15,18 +15,21 @@
     padding: 0 2rem 2rem 2rem;
 }
 
-.banner-header {
-    margin: 20px;
-    text-align: center;
-}
+    .banner-header {
+        margin: 20px;
+        text-align: center;
+    }
 
-.banner > a > .bi-plus-circle {
-    color: white;
-    font-size: xx-large;
-    text-shadow: 0px 0px 15px rgb(0, 0, 0);
-}
+    .banner > a > .bi-plus-circle {
+        color: white;
+        font-size: xx-large;
+        text-shadow: 0px 0px 15px rgb(0, 0, 0);
+    }
+    .banner > a > .bi-plus-circle:hover {
+        color: #808080;
+    }
 
-.proyects {
+.proyects_list {
     display: grid;
     grid-template-rows: auto;
     grid-gap: 1rem;
@@ -35,7 +38,7 @@
     padding: 1rem 0;
 }
 
-    .proyects > li {
+    .proyects_list > li {
         box-shadow: 0 0 8px rgba(0, 0, 0, 0.60);
         border-radius: .5rem;
         padding: .5rem;
@@ -43,7 +46,7 @@
         bottom: 10px;
     }
 
-        .proyects > li > .delete-button {
+        .proyects_list > li > .delete-button {
             position: absolute;
             right: 7px;
             top: 4px;
@@ -53,14 +56,40 @@
             border-color: #000000;
         }
 
-            .proyects > li > .delete-button:focus {
+            .proyects_list > li > .delete-button:focus {
                 outline: none;
             }
-            
-            .proyects > li > .delete-button:hover {
+
+            .proyects_list > li > .delete-button:hover {
                 color: black;
             }
 
+        .proyects_list > li > a {
+            color: white;
+            width: 100px;
+        }
+        
+        .proyects_list > li > a:hover {
+            text-decoration: none;
+            color: #808080;
+        }
+
+.details {
+    position: relative;
+}
+
+    .details .bi-plus-square {
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        color: white;
+        font-size: 4em;
+        text-shadow: 0px 0px 15px rgb(0, 0, 0);
+    }
+
+    .details .bi-plus-square:hover {
+        color: #808080;
+    }
 
 .subtasks {
     padding: 2rem;
@@ -73,7 +102,7 @@
 
     .subtasks > ul {
         display: grid;
-        grid-template-columns: repeat(auto-fit, 395px);
+        grid-template-columns: repeat(auto-fit, 390px);
         grid-gap: 2rem;
         list-style-type: none;
         margin-left: -40px;
@@ -144,4 +173,6 @@
                     background-color: black;
                     outline: none;
                 }
+
+    
 
