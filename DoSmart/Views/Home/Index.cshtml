@@ -13,7 +13,7 @@
             {
                 <li>
                     <a href="/Home/Index/@project.Id">@project.Title</a>
-                    <button class="delete-button js-delete-project">
+                    <button class="delete-button js-delete-project" data-project-id="@project.Id">
                         <i class="bi bi-x"></i>
                     </button>
                 </li>
@@ -30,7 +30,9 @@
                 {
                     if (!activity.Done)
                     {
-                        <li>
+                        <li>                            
+                            <input id="activity-@activity.Id" type="checkbox">
+                            <label for="activity-@activity.Id" class="side-label"></label>
                             <h4>@activity.Title</h4>
                             <button class="importance-icon">
                                 <i class="bi bi-exclamation-circle-fill" style="font-size: 2rem; color: @activity.GetImportanceColor();"></i>
@@ -131,7 +133,7 @@
                             className: 'btn-danger',
                             callback: function () {
                                 $.ajax({
-                                    url: "/api/project/" + link.attr("data-activity-id"),
+                                    url: "/api/projects/" + link.attr("data-project-id"),
                                     method: "DELETE"
                                 })
                                     .done(function () {

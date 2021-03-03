@@ -37,23 +37,26 @@ namespace DoSmart.Controllers
         {
             if (!ModelState.IsValid)
             {
+                viewModel.ImportanceCategories = _context.ImportanceCategories.ToList();
+                viewModel.Projects = _context.Projects.ToList();
                 viewModel.PageHeader = "Add an Activity";
                 return View("ActivityForm", viewModel);
             }
 
             var activity = new Activity()
-                {
-                    Title = viewModel.Title,
-                    Content = viewModel.Content,
-                    CreatorId = User.Identity.GetUserId(),
-                    ProjectId = viewModel.ProjectId,
-                    Date = DateTime.Now,
-                    ImportanceCategoryId = viewModel.ImportanceCategoryId
-                };
-            _context.Activities.Add(activity);           
+            {
+                Title = viewModel.Title,
+                Content = viewModel.Content,
+                CreatorId = User.Identity.GetUserId(),
+                ProjectId = viewModel.ProjectId,
+                Date = DateTime.Now,
+                ImportanceCategoryId = viewModel.ImportanceCategoryId
+            };
+
+            _context.Activities.Add(activity);
             _context.SaveChanges();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Home", new { id = viewModel.ProjectId} );
         }
 
 
@@ -75,6 +78,8 @@ namespace DoSmart.Controllers
                 Content = activity.Content,
                 ImportanceCategoryId = activity.ImportanceCategoryId,
                 ImportanceCategories = _context.ImportanceCategories.ToList(),
+                ProjectId = activity.ProjectId,
+                Projects = _context.Projects.ToList(),
                 PageHeader = "Edit Activity",
                 Action = "Edit"
             };
@@ -90,6 +95,8 @@ namespace DoSmart.Controllers
         {
             if (!ModelState.IsValid)
             {
+                viewModel.ImportanceCategories = _context.ImportanceCategories.ToList();
+                viewModel.Projects = _context.Projects.ToList();
                 viewModel.PageHeader = "Add an Activity";
                 return View("ActivityForm", viewModel);
             }
@@ -103,13 +110,13 @@ namespace DoSmart.Controllers
 
             activity.Title = viewModel.Title;
             activity.Content = viewModel.Content;
-            activity.CreatorId = User.Identity.GetUserId();
             activity.Date = DateTime.Now;
             activity.ImportanceCategoryId = viewModel.ImportanceCategoryId;
+            activity.ProjectId = viewModel.ProjectId;
             
             _context.SaveChanges();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Home", new { id = viewModel.ProjectId });
         }
     }
 }

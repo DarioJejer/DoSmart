@@ -26,7 +26,7 @@ namespace DoSmart.Controllers.API
             _context.Projects.Remove(project);
             _context.SaveChanges();
 
-            return Ok(project.Id);
+            return Ok(id);
         }
     }
 }

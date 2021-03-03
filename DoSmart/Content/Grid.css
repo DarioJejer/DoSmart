@@ -112,14 +112,57 @@
             background-color: #808080;
             border: 1px solid #000000;
             border-radius: 1rem;
-            padding: 0 10px 10px 10px;
+            padding: 10px;
             position: relative;
         }
 
-            .subtasks > ul > li > h4 {
-                margin-top: 10px;
-                margin-right: 90px;
-            }
+input[type="checkbox"], input[type="radio"] {
+    display: none;  
+}
+
+label {
+    display: inline;
+    position: relative;
+    margin: 10px 0;
+    padding-left: 35px;
+}
+
+.side-label::before, .side-label::after {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: 3px;
+}
+
+input[type="checkbox"] + .side-label::before,
+input[type="checkbox"] + .side-label::after {
+    border-radius: 30%;
+}
+
+
+.side-label::before {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #fff;
+}
+
+.side-label::after {
+    display: none;
+    width: 12px;
+    height: 12px;
+    margin: 4px;
+    background-color: white;
+}
+
+input:checked + .side-label::after {
+    display: block;
+}
+
+        .subtasks > ul > li > h4 {
+            display: inline;
+            margin-right: 90px;            
+        }
 
             .subtasks > ul > li .importance-icon {
                 position: absolute;
