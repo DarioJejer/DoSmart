@@ -1,0 +1,17 @@
+﻿@model  DoSmart.ViewModels.ProjectFormViewModel
+@{
+    ViewBag.Title = "ProjectForm";
+}
+
+<h2>Project Form</h2>
+
+@using (Html.BeginForm("Create", "Projects"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Title)
+        @Html.TextBoxFor(m => m.Title, new { @class = "form-control", autofocus = "autofocus" })
+    </div>
+    @Html.HiddenFor(m => m.Id)
+    <button class="btn btn-primary" type="submit">Save</button>
+}
+
