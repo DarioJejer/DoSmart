@@ -1,4 +1,5 @@
 ﻿using DoSmart.Models;
+using DoSmart.ViewModels;
 using Microsoft.AspNet.Identity;
 using System.Data.Entity;
 using System.Linq;
@@ -25,7 +26,17 @@ namespace DoSmart.Controllers
                 .Where(a => a.CreatorId == userId)
                 .OrderByDescending(a => a.ImportanceCategoryId)
                 .ToList();
-            return View(activities);
+            var projects = _context.Projects
+                .Where(p => p.CreatorId == userId)
+                .ToList();
+
+            var viewModel = new HomeViewModel()
+            {
+                Activities = activities,
+                Projects = projects
+            };
+
+            return View(viewModel);
         }
 
         public ActionResult About()

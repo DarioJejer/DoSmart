@@ -1,11 +1,19 @@
-﻿@model List<DoSmart.Models.Activity>
+﻿@model DoSmart.ViewModels.HomeViewModel
 @{
     ViewBag.Title = "Home Page";
 }
+<h2>List of Projects</h2>
+<ul>
+    @foreach (var project in Model.Projects)
+    {
+        <li>@project.Title</li>
+    }
+</ul>
+
 
 <h2>To do Activities:</h2>
 <ul>
-    @foreach (var activity in Model)
+    @foreach (var activity in Model.Activities)
      {
         if (!activity.Done)
         {
@@ -22,7 +30,7 @@
 
 <h2>Done Activities:</h2>
 <ul>
-    @foreach (var activity in Model)
+    @foreach (var activity in Model.Activities)
      {
         if (activity.Done)
         {
