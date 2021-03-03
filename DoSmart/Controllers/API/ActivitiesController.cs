@@ -7,7 +7,7 @@ namespace DoSmart.Controllers.API
 {
     public class ActivitiesController : ApiController
     {
-        private ApplicationDbContext _context { get; set; }
+        private ApplicationDbContext _context;
 
         public ActivitiesController()
         {
