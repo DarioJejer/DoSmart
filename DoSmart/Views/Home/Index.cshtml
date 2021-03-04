@@ -22,14 +22,18 @@
         <a href="/Projects/Create"><i class="bi bi-plus-circle"></i></a>
     </div>
 
-    <div class="details">
-        <a href="/Activities/Create"><i class="bi bi-plus-square"></i></a>
-        @if (Model.ToDoActivities.Count() != 0)
+    <div class="details">        
+        @if (Model.SelectedProjectId != 0)
+        {
+            <h1 style="text-align: center; font-family: Consolas">@Model.Projects.Single(p => p.Id == Model.SelectedProjectId).Title</h1>
+            <a href="/Activities/Create/@Model.SelectedProjectId"><i class="bi bi-plus-square"></i></a>
+        }
+        @if (Model.ToDoActivities.Count() != 0 || Model.DoneActivities.Count() != 0)
          {
              <section class="activities_list">
                 <h2>To do</h2>
                 <hr style="width: 30%; color: black"/>
-                <ul>
+                <ul id="todo-activities">
                     @foreach (var activity in Model.ToDoActivities)
                      {
                         <li>                            
@@ -53,10 +57,7 @@
                      }
                 </ul>
             </section>
-         }
-
-        @if (Model.DoneActivities.Count() != 0)
-         {
+         
             <section class="activities_list">
                 <h2>Done</h2>
                 <hr style="width: 30%"/>
@@ -65,7 +66,7 @@
                     {
                         <li>
                             <input id="activity-@activity.Id" type="checkbox" checked>
-                            <label for="activity-@activity.Id" class="checkbox-button" data-activity-id="@activity.Id"></label>
+                            <label for="activity-@activity.Id" class="checkbox-button" data-activity-id="@activity.Id" data-activity-done="@activity.Done"></label>
                             <h4>@activity.Title</h4>
                             <button class="delete-button js-delete-activity" data-activity-id="@activity.Id">
                                 <i class="bi bi-x"></i>
@@ -85,91 +86,100 @@
 {
     <script>
         $(document).ready(function () {
-            $(".side-label").click(function (e) {
-                var checkbox = $(e.target);
+            $(".checkbox-button").click(function (e) {
+                var checkbox = $(e.currentTarget);
                 $.ajax({
                     url: "/api/activities/" + checkbox.attr("data-activity-id"),
                     method: "PUT"
                 })
                     .done(function () {
                         checkbox.parents("li").fadeOut(1000, function () {
-                            $(this).prependTo($("#done-activities"));
-                            $(this).children("form").remove();
-                            $(this).children(".importance-icon").remove();
-                            $(this).fadeTo(500, 0.5);
+                            if (!checkbox.attr("data-activity-done")) {
+                                checkbox.attr("data-activity-done", true);
+                                $(this).prependTo($("#done-activities"));
+                                $(this).children("form").remove();
+                                $(this).children(".importance-icon").remove();
+                                $(this).fadeTo(500, 0.5);
+                            }
+                            else {
+                                checkbox.attr("data-activity-done", false);
+                                $(this).prependTo($("#todo-activities"));
+                                $(this).fadeTo(500, 1);
+                            }
                         });
                     })
                     .fail(function () {
                         alert("Something failed!");
                     })
             })
+            
             $(".js-delete-activity").click(function (e) {
-                var button = $(e.target);
-                bootbox.dialog({
-                    title: 'Confirm',
-                    message: "Are you sure you want to delete this activity?",
-                    buttons: {
-                        cancel: {
-                            label: "No",
-                            className: 'btn-default',
-                            callback: function () {
-                                bootbox.hideAll();
-                            }
-                        },
-                        ok: {
-                            label: "Yes",
-                            className: 'btn-danger',
-                            callback: function () {
-                                $.ajax({
-                                    url: "/api/activities/" + button.attr("data-activity-id"),
-                                    method: "DELETE"
-                                })
-                                    .done(function () {
-                                        button.parents("li").fadeOut(function () {
-                                            $(this).remove();
-                                        });
-                                    })
-                                    .fail(function () {
-                                        alert("Something failed!");
-                                    });
-                            }
-                        }
+
+                var button = $(e.currentTarget);
+                Swal.fire({
+                    title: 'Do you want to delete this Activity?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: "/api/activities/" + button.attr("data-activity-id"),
+                            method: "DELETE"
+                        })
+                        .done(function () {
+                            button.parents("li").fadeOut(function () {
+                                $(this).remove();
+                            });
+                            Swal.fire(
+                                'Deleted!',
+                                'Your activity has been deleted.',
+                                'success'
+                            )
+                        })
+                        .fail(function () {
+                            alert("Something failed!");
+                        })
                     }
                 })
             })
+
             $(".js-delete-project").click(function (e) {
-                var button = $(e.target);
-                bootbox.dialog({
-                    title: 'Confirm',
-                    message: "Are you sure you want to delete this project?",
-                    buttons: {
-                        cancel: {
-                            label: "No",
-                            className: 'btn-default',
-                            callback: function () {
-                                bootbox.hideAll();
-                            }
-                        },
-                        ok: {
-                            label: "Yes",
-                            className: 'btn-danger',
-                            callback: function () {
-                                $.ajax({
-                                    url: "/api/projects/" + button.attr("data-project-id"),
-                                    method: "DELETE"
-                                })
-                                    .done(function () {
-                                        button.parents("li").fadeOut(function () {
-                                            $(this).remove();
-                                        });
-                                    })
-                                    .fail(function () {
-                                        alert("Something failed!");
-                                    });
-                            }
-                        }
+                var button = $(e.currentTarget);
+                Swal.fire({
+                    title: 'Do you want to delete this Project?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: "/api/projects/" + button.attr("data-project-id"),
+                            method: "DELETE"
+                        })
+                        .done(function () {
+                            button.parents("li").fadeOut(function () {
+                                $(this).remove();
+                            });
+                            Swal.fire(
+                                'Deleted!',
+                                'Your activity has been deleted.',
+                                'success'
+                            )
+                        })
+                        .fail(function () {
+                            alert("Something failed!");
+                        })
                     }
-                })
+                })                
             })
         })
     </script>
