@@ -42,6 +42,12 @@ namespace DoSmart.Controllers
                 return View("ActivityForm", viewModel);
             }
 
+            var project = _context.Projects.SingleOrDefault(p => p.Id == viewModel.ProjectId);
+            if (project == null)
+                return HttpNotFound();
+            if (project.CreatorId != User.Identity.GetUserId())
+                return new HttpUnauthorizedResult();
+
             var activity = new Activity()
             {
                 Title = viewModel.Title,

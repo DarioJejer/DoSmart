@@ -23,7 +23,7 @@ namespace DoSmart.Controllers.API
             if (activity == null)
                 return NotFound();
             if (activity.CreatorId != User.Identity.GetUserId())
-                return BadRequest();
+                return Unauthorized();
 
             activity.Done = !activity.Done;
             _context.SaveChanges();
@@ -38,6 +38,8 @@ namespace DoSmart.Controllers.API
 
             if (activity == null)
                 return NotFound();
+            if (activity.CreatorId != User.Identity.GetUserId())
+                return Unauthorized();
 
             _context.Activities.Remove(activity);
             _context.SaveChanges();

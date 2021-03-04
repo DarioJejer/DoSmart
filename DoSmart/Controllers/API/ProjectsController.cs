@@ -1,4 +1,5 @@
 ﻿using DoSmart.Models;
+using Microsoft.AspNet.Identity;
 using System.Linq;
 using System.Web.Http;
 
@@ -22,6 +23,8 @@ namespace DoSmart.Controllers.API
 
             if (project == null)
                 return NotFound();
+            if (project.CreatorId != User.Identity.GetUserId())
+                return Unauthorized();
 
             _context.Projects.Remove(project);
             _context.SaveChanges();

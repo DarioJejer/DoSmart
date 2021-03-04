@@ -18,7 +18,6 @@ namespace DoSmart.Controllers
         [Authorize]
         public ActionResult Create()
         {
-
             return View("ProjectForm", new ProjectFormViewModel());
         }
 
