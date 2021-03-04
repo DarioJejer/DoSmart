@@ -7,7 +7,12 @@ namespace DoSmart.ViewModels
     public class ActivityFormViewModel
     {
         public int Id { get; set; }
+
+        [Required]
+        [StringLength(255)]
         public string Title { get; set; }
+
+        [Required]
         public string Content { get; set; }
         public int ProjectId { get; set; }
 
