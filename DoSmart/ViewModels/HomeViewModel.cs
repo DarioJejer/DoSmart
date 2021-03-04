@@ -8,6 +8,6 @@ namespace DoSmart.ViewModels
         public IEnumerable<Activity> ToDoActivities { get; set; }
         public IEnumerable<Activity> DoneActivities { get; set; }
         public IEnumerable<Project> Projects { get; set; }
-
+        public int SelectedProjectId { get; set; }
     }
 }

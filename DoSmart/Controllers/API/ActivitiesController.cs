@@ -27,7 +27,7 @@ namespace DoSmart.Controllers.API
 
             activity.Done = !activity.Done;
             _context.SaveChanges();
-            return Ok(id);
+            return Ok();
         }
 
         [Authorize]
@@ -42,7 +42,7 @@ namespace DoSmart.Controllers.API
             _context.Activities.Remove(activity);
             _context.SaveChanges();
 
-            return Ok(id);
+            return Ok();
         }
     }
 }

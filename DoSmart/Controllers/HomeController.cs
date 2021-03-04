@@ -23,8 +23,8 @@ namespace DoSmart.Controllers
                 .Include(a => a.ImportanceCategory)
                 .Include(a => a.Project)
                 .Where(a => a.CreatorId == userId && a.ProjectId == id)
-                .OrderByDescending(a => a.ImportanceCategoryId)
-                .ToList();
+                .OrderByDescending(a => a.ImportanceCategoryId);
+
             var projects = _context.Projects
                 .Where(p => p.CreatorId == userId);
 
@@ -35,24 +35,11 @@ namespace DoSmart.Controllers
             {
                 ToDoActivities = toDoActivities,
                 DoneActivities = doneActivities,
-                Projects = projects
+                Projects = projects,
+                SelectedProjectId = id
             };
 
             return View(viewModel);
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
         }
     }
 }

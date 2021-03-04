@@ -17,12 +17,12 @@ namespace DoSmart.Controllers
         public ApplicationDbContext _context { get; set; }
 
         [Authorize]
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
             var viewModel = new ActivityFormViewModel()
             {
                 ImportanceCategories = _context.ImportanceCategories.ToList(),
-                Projects = _context.Projects.ToList(),
+                ProjectId = id,
                 PageHeader = "Add an Activity",
                 Action = "Create"
             };
@@ -38,7 +38,6 @@ namespace DoSmart.Controllers
             if (!ModelState.IsValid)
             {
                 viewModel.ImportanceCategories = _context.ImportanceCategories.ToList();
-                viewModel.Projects = _context.Projects.ToList();
                 viewModel.PageHeader = "Add an Activity";
                 return View("ActivityForm", viewModel);
             }
@@ -76,10 +75,9 @@ namespace DoSmart.Controllers
                 Id = activity.Id,
                 Title = activity.Title,
                 Content = activity.Content,
+                ProjectId = activity.ProjectId,
                 ImportanceCategoryId = activity.ImportanceCategoryId,
                 ImportanceCategories = _context.ImportanceCategories.ToList(),
-                ProjectId = activity.ProjectId,
-                Projects = _context.Projects.ToList(),
                 PageHeader = "Edit Activity",
                 Action = "Edit"
             };
@@ -96,7 +94,6 @@ namespace DoSmart.Controllers
             if (!ModelState.IsValid)
             {
                 viewModel.ImportanceCategories = _context.ImportanceCategories.ToList();
-                viewModel.Projects = _context.Projects.ToList();
                 viewModel.PageHeader = "Add an Activity";
                 return View("ActivityForm", viewModel);
             }
@@ -112,7 +109,6 @@ namespace DoSmart.Controllers
             activity.Content = viewModel.Content;
             activity.Date = DateTime.Now;
             activity.ImportanceCategoryId = viewModel.ImportanceCategoryId;
-            activity.ProjectId = viewModel.ProjectId;
             
             _context.SaveChanges();
 

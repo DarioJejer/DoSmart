@@ -9,10 +9,7 @@ namespace DoSmart.ViewModels
         public int Id { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
-
-        [Display(Name = "Project")]
         public int ProjectId { get; set; }
-        public IEnumerable<Project> Projects { get; set; }
 
         [Display(Name = "Importance")]
         public byte ImportanceCategoryId { get; set; }
