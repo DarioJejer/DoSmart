@@ -25,7 +25,8 @@ namespace DoSmart
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
-                      "~/Content/grid.css"));
+                      "~/Content/grid.css",
+                      "~/Content/buttons.css"));
         }
     }
 }

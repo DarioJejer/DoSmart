@@ -23,17 +23,18 @@
     </div>
 
     <div class="details">
-        <section class="activities_list">
-            <h2>To do</h2>
-            <hr style="width: 30%; color: black"/>
-            <ul>
-                @foreach (var activity in Model.Activities)
-                {
-                    if (!activity.Done)
-                    {
+        <a href="/Activities/Create"><i class="bi bi-plus-square"></i></a>
+        @if (Model.ToDoActivities.Count() != 0)
+         {
+             <section class="activities_list">
+                <h2>To do</h2>
+                <hr style="width: 30%; color: black"/>
+                <ul>
+                    @foreach (var activity in Model.ToDoActivities)
+                     {
                         <li>                            
                             <input id="activity-@activity.Id" type="checkbox">
-                            <label for="activity-@activity.Id" class="side-label" data-activity-id="@activity.Id"></label>
+                            <label for="activity-@activity.Id" class="checkbox-button" data-activity-id="@activity.Id"></label>
                             <h4>@activity.Title</h4>
                             <button class="importance-icon">
                                 <i class="bi bi-exclamation-circle-fill" style="font-size: 2rem; color: @activity.GetImportanceColor();"></i>
@@ -49,22 +50,22 @@
                             <hr style="margin: 10px auto" />
                             <p>@activity.Content</p>
                         </li>
-                    }
-                }
-            </ul>
-            <a href="/Activities/Create"><i class="bi bi-plus-square"></i></a>
-        </section>
-        <section class="activities_list">
-            <h2>Done</h2>
-            <hr style="width: 30%"/>
-            <ul id="done-activities">
-                @foreach (var activity in Model.Activities)
-                {
-                    if (activity.Done)
+                     }
+                </ul>
+            </section>
+         }
+
+        @if (Model.DoneActivities.Count() != 0)
+         {
+            <section class="activities_list">
+                <h2>Done</h2>
+                <hr style="width: 30%"/>
+                <ul id="done-activities">
+                    @foreach (var activity in Model.DoneActivities)
                     {
                         <li>
                             <input id="activity-@activity.Id" type="checkbox" checked>
-                            <label for="activity-@activity.Id" class="side-label" data-activity-id="@activity.Id"></label>
+                            <label for="activity-@activity.Id" class="checkbox-button" data-activity-id="@activity.Id"></label>
                             <h4>@activity.Title</h4>
                             <button class="delete-button js-delete-activity" data-activity-id="@activity.Id">
                                 <i class="bi bi-x"></i>
@@ -73,9 +74,9 @@
                             <p>@activity.Content</p>
                         </li>
                     }
-                }
-            </ul>
-        </section>
+                </ul>
+            </section>
+         }
     </div>
 </section>
 
@@ -85,13 +86,13 @@
     <script>
         $(document).ready(function () {
             $(".side-label").click(function (e) {
-                var link = $(e.target);
+                var checkbox = $(e.target);
                 $.ajax({
-                    url: "/api/activities/" + link.attr("data-activity-id"),
+                    url: "/api/activities/" + checkbox.attr("data-activity-id"),
                     method: "PUT"
                 })
                     .done(function () {
-                        link.parents("li").fadeOut(1000, function () {
+                        checkbox.parents("li").fadeOut(1000, function () {
                             $(this).prependTo($("#done-activities"));
                             $(this).children("form").remove();
                             $(this).children(".importance-icon").remove();
@@ -103,7 +104,7 @@
                     })
             })
             $(".js-delete-activity").click(function (e) {
-                var link = $(e.target);
+                var button = $(e.target);
                 bootbox.dialog({
                     title: 'Confirm',
                     message: "Are you sure you want to delete this activity?",
@@ -120,11 +121,11 @@
                             className: 'btn-danger',
                             callback: function () {
                                 $.ajax({
-                                    url: "/api/activities/" + link.attr("data-activity-id"),
+                                    url: "/api/activities/" + button.attr("data-activity-id"),
                                     method: "DELETE"
                                 })
                                     .done(function () {
-                                        link.parents("li").fadeOut(function () {
+                                        button.parents("li").fadeOut(function () {
                                             $(this).remove();
                                         });
                                     })
@@ -137,7 +138,7 @@
                 })
             })
             $(".js-delete-project").click(function (e) {
-                var link = $(e.target);
+                var button = $(e.target);
                 bootbox.dialog({
                     title: 'Confirm',
                     message: "Are you sure you want to delete this project?",
@@ -154,11 +155,11 @@
                             className: 'btn-danger',
                             callback: function () {
                                 $.ajax({
-                                    url: "/api/projects/" + link.attr("data-project-id"),
+                                    url: "/api/projects/" + button.attr("data-project-id"),
                                     method: "DELETE"
                                 })
                                     .done(function () {
-                                        link.parents("li").fadeOut(function () {
+                                        button.parents("li").fadeOut(function () {
                                             $(this).remove();
                                         });
                                     })

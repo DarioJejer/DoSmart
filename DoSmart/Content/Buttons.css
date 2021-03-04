@@ -1,0 +1,164 @@
+﻿
+.proyects_list > li > .delete-button {
+    position: absolute;
+    right: 7px;
+    top: 4px;
+    border-radius: 8px;
+    background-color: #4b4b4b;
+    border: 1px;
+    border-color: #000000;
+}
+
+    .proyects_list > li > .delete-button:focus {
+        outline: none;
+    }
+
+    .proyects_list > li > .delete-button:hover {
+        color: black;
+    }
+
+
+
+.proyects_list > li > a {
+    color: white;
+    width: 100px;
+}
+
+    .proyects_list > li > a:hover {
+        text-decoration: none;
+        color: #808080;
+    }
+
+
+
+.banner > a > .bi-plus-circle {
+    color: white;
+    font-size: xx-large;
+    text-shadow: 0px 0px 15px rgb(0, 0, 0);
+}
+
+    .banner > a > .bi-plus-circle:hover {
+        color: #808080;
+    }
+
+
+
+.details {
+    position: relative;
+}
+
+    .details .bi-plus-square {
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        color: white;
+        font-size: 4em;
+        text-shadow: 0px 0px 15px rgb(0, 0, 0);
+    }
+
+        .details .bi-plus-square:hover {
+            color: #808080;
+        }
+
+
+
+input[type="checkbox"], input[type="radio"] {
+    display: none;
+}
+
+.checkbox-button {
+    display: inline;
+    position: relative;
+    margin: 10px 0;
+    padding-left: 35px;
+}
+
+    .checkbox-button::before, .checkbox-button::after {
+        content: '';
+        position: absolute;
+        top: -3px;
+        left: 3px;
+    }
+
+input[type="checkbox"] + .checkbox-button::before,
+input[type="checkbox"] + .checkbox-button::after {
+    border-radius: 30%;
+}
+
+.checkbox-button::before {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #fff;
+}
+
+.checkbox-button::after {
+    display: none;
+    width: 12px;
+    height: 12px;
+    margin: 4px;
+    background-color: white;
+}
+
+input:checked + .checkbox-button::after {
+    display: block;
+}
+
+
+
+.activities_list > ul > li .importance-icon {
+    position: absolute;
+    right: 67px;
+    top: 5px;
+    background-color: #808080;
+    border: none;
+}
+
+    .activities_list > ul > li .importance-icon:focus {
+        outline: none;
+    }
+
+
+
+.activities_list > ul > li > form > .edit-button {
+    position: absolute;
+    right: 40px;
+    top: 7px;
+    border-radius: 8px;
+    background-color: #808080;
+    border: 1px;
+    border-color: #000000;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.60);
+}
+
+    .activities_list > ul > li > form > .edit-button:hover {
+        background-color: #4b4b4b;
+    }
+
+    .activities_list > ul > li > form > .edit-button:focus {
+        background-color: black;
+        outline: none;
+    }
+
+
+
+
+.activities_list > ul > li > .delete-button {
+    position: absolute;
+    right: 7px;
+    top: 7px;
+    border-radius: 8px;
+    background-color: #808080;
+    border: 1px;
+    border-color: #000000;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.60);
+}
+
+    .activities_list > ul > li > .delete-button:hover {
+        background-color: #4b4b4b;
+    }
+
+    .activities_list > ul > li > .delete-button:focus {
+        background-color: black;
+        outline: none;
+    }

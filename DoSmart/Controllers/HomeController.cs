@@ -26,12 +26,15 @@ namespace DoSmart.Controllers
                 .OrderByDescending(a => a.ImportanceCategoryId)
                 .ToList();
             var projects = _context.Projects
-                .Where(p => p.CreatorId == userId)
-                .ToList();
+                .Where(p => p.CreatorId == userId);
+
+            var toDoActivities = activities.Where(a => !a.Done).ToList();
+            var doneActivities = activities.Where(a => a.Done).ToList();
 
             var viewModel = new HomeViewModel()
             {
-                Activities = activities,
+                ToDoActivities = toDoActivities,
+                DoneActivities = doneActivities,
                 Projects = projects
             };
 
