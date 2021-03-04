@@ -33,3 +33,11 @@ textarea {
 .navbar-header {
     padding-left: 15px;
 }
+
+.input-validation-error{
+    border: 2px solid red;
+}
+
+.field-validation-error{
+    color:#808080;
+}
