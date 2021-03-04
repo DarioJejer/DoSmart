@@ -86,11 +86,14 @@
 {
     <script>
         $(document).ready(function () {
+            var token = $('input[name="`__RequestVerificationToken`"]').val();
             $(".checkbox-button").click(function (e) {
                 var checkbox = $(e.currentTarget);
                 $.ajax({
                     url: "/api/activities/" + checkbox.attr("data-activity-id"),
-                    method: "PUT"
+                    method: "PUT",
+                    data: {__RequestVerificationToken: token},
+                    contentType: 'application/x-www-form-urlencoded; charset=utf-8'
                 })
                     .done(function () {
                         checkbox.parents("li").fadeOut(1000, function () {
@@ -129,7 +132,9 @@
                     if (result.isConfirmed) {
                         $.ajax({
                             url: "/api/activities/" + button.attr("data-activity-id"),
-                            method: "DELETE"
+                            method: "DELETE",
+                            data: {__RequestVerificationToken: token},
+                            contentType: 'application/x-www-form-urlencoded; charset=utf-8'
                         })
                         .done(function () {
                             button.parents("li").fadeOut(function () {
@@ -163,17 +168,15 @@
                     if (result.isConfirmed) {
                         $.ajax({
                             url: "/api/projects/" + button.attr("data-project-id"),
-                            method: "DELETE"
+                            method: "DELETE",
+                            data: { __RequestVerificationToken: token },
+                            contentType: 'application/x-www-form-urlencoded; charset=utf-8'
                         })
                         .done(function () {
                             button.parents("li").fadeOut(function () {
                                 $(this).remove();
                             });
-                            Swal.fire(
-                                'Deleted!',
-                                'Your activity has been deleted.',
-                                'success'
-                            )
+                            document.querySelector('.details').remove();
                         })
                         .fail(function () {
                             alert("Something failed!");
