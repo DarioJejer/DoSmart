@@ -1,14 +1,12 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
+﻿using DoSmart.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using DoSmart.Models;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
 
 namespace DoSmart.Controllers
 {
@@ -155,8 +153,8 @@ namespace DoSmart.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    SeedNewUser(user.Id);
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
@@ -170,6 +168,31 @@ namespace DoSmart.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+
+            void SeedNewUser(string userId)
+            {
+                var context = new ApplicationDbContext();
+                var testTheAppProject = new Project() { CreatorId = userId, Title = "Test the App", Date = DateTime.Now };
+                context.Projects.Add(testTheAppProject);
+                var reportIssuesProject = new Project() { CreatorId = userId, Title = "Report issues", Date = DateTime.Now };
+                context.Projects.Add(reportIssuesProject);
+                var suggestChangesProject = new Project() { CreatorId = userId, Title = "Suggest changes", Date = DateTime.Now };
+                context.Projects.Add(suggestChangesProject);
+                context.SaveChanges();
+                var activities = new Activity[]
+                {
+                        new Activity() { CreatorId = userId, ProjectId = testTheAppProject.Id, Title = "Create many Tasks", Content = "Up to the point where the list gets a new row", ImportanceCategoryId = 2, Date = DateTime.Now},
+                        new Activity() { CreatorId = userId, ProjectId = testTheAppProject.Id, Title = "Test the 'delete' operation", Content = "Also test deleting a project", ImportanceCategoryId = 3, Date = DateTime.Now},
+                        new Activity() { CreatorId = userId, ProjectId = testTheAppProject.Id, Title = "Importance icon ======>", Content = "See that tasks are order arcording to this", ImportanceCategoryId = 4, Date = DateTime.Now},
+                        new Activity() { CreatorId = userId, ProjectId = testTheAppProject.Id, Title = "Test editing a Task", Content = "Change it's Importance and see that it goes up in the list", ImportanceCategoryId = 2, Date = DateTime.Now},
+                        new Activity() { CreatorId = userId, ProjectId = testTheAppProject.Id, Title = "Resize the window", Content = "And see how the elements in the lists respond", ImportanceCategoryId = 1, Date = DateTime.Now},
+                        new Activity() { CreatorId = userId, ProjectId = testTheAppProject.Id, Title = "Test the 'Check' operation", Content = "It can be 'Uncheck' as well", ImportanceCategoryId = 3, Date = DateTime.Now, Done = true},
+                        new Activity() { CreatorId = userId, ProjectId = reportIssuesProject.Id, Title = "Write down encountered bugs", Content = "Or any incorrect behavior with the app", ImportanceCategoryId = 3, Date = DateTime.Now},
+                        new Activity() { CreatorId = userId, ProjectId = suggestChangesProject.Id, Title = "Suggest changes to the App", Content = "Feel free to express any ideas about new funtionalities or changes in the App", ImportanceCategoryId = 3, Date = DateTime.Now},
+                };
+                context.Activities.AddRange(activities);
+                context.SaveChanges();
+            }
         }
 
         //
