@@ -283,6 +283,10 @@
     <Compile Include="Migrations\202103022146082_AddProjectsTable.Designer.cs">
       <DependentUpon>202103022146082_AddProjectsTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103051557294_FixForeignKeysBeingNullable.cs" />
+    <Compile Include="Migrations\202103051557294_FixForeignKeysBeingNullable.designer.cs">
+      <DependentUpon>202103051557294_FixForeignKeysBeingNullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -378,6 +382,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103022146082_AddProjectsTable.resx">
       <DependentUpon>202103022146082_AddProjectsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103051557294_FixForeignKeysBeingNullable.resx">
+      <DependentUpon>202103051557294_FixForeignKeysBeingNullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

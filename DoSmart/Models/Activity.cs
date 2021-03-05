@@ -1,19 +1,28 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace DoSmart.Models
 {
     public class Activity
     {
         public int Id { get; set; }
-        public ApplicationUser Creator { get; set; }
+
+        [Required]
         public string CreatorId { get; set; }
-        public Project Project { get; set; }
+        public ApplicationUser Creator { get; set; }
+
+        [Required]
         public int ProjectId { get; set; }
+        public Project Project { get; set; }
+
+        [Required]
         public string Title { get; set; }
         public string Content { get; set; }
         public DateTime Date { get; set; }
-        public ImportanceCategory ImportanceCategory { get; set; }
+
+        [Required]
         public byte ImportanceCategoryId { get; set; }
+        public ImportanceCategory ImportanceCategory { get; set; }
         public bool Done { get; set; }
         public string GetImportanceColor()
         {
