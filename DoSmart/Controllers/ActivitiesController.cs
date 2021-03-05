@@ -33,7 +33,6 @@ namespace DoSmart.Controllers
 
         [Authorize]
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Create(ActivityFormViewModel viewModel)
         {
             if (!ModelState.IsValid)
@@ -96,7 +95,6 @@ namespace DoSmart.Controllers
 
         [Authorize]
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit(ActivityFormViewModel viewModel)
         {
             if (!ModelState.IsValid)

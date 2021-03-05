@@ -23,7 +23,6 @@ namespace DoSmart.Controllers
 
         [Authorize]
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Create(ProjectFormViewModel viewModel)
         {
             if (!ModelState.IsValid)

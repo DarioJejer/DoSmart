@@ -16,7 +16,6 @@ namespace DoSmart.Controllers.API
 
         [Authorize]
         [HttpPut]
-        [System.Web.Mvc.ValidateAntiForgeryToken]
         public IHttpActionResult Check(int id)
         {
             var activity = _context.Activities.SingleOrDefault(a => a.Id == id);
@@ -33,7 +32,6 @@ namespace DoSmart.Controllers.API
 
         [Authorize]
         [HttpDelete]
-        [System.Web.Mvc.ValidateAntiForgeryToken]
         public IHttpActionResult Delete(int id)
         {
             var activity = _context.Activities.SingleOrDefault(a => a.Id == id);

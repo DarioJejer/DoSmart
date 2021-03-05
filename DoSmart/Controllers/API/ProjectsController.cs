@@ -17,7 +17,6 @@ namespace DoSmart.Controllers.API
 
         [Authorize]
         [HttpDelete]
-        [System.Web.Mvc.ValidateAntiForgeryToken]
         public IHttpActionResult Delete(int id)
         {
             var project = _context.Projects.SingleOrDefault(p => p.Id == id);
