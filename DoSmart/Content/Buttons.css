@@ -108,7 +108,7 @@ input:checked + .checkbox-button::after {
 
 .activities_list > ul > li .importance-icon {
     position: absolute;
-    right: 67px;
+    right: 73px;
     top: 5px;
     background-color: #808080;
     border: none;

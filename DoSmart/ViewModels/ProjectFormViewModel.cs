@@ -9,5 +9,6 @@ namespace DoSmart.ViewModels
         [Required]
         [StringLength(255)]
         public string Title { get; set; }
+        public string PageHeader { get; set; }
     }
 }

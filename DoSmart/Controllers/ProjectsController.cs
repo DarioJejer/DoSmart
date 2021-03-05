@@ -18,7 +18,10 @@ namespace DoSmart.Controllers
         [Authorize]
         public ActionResult Create()
         {
-            return View("ProjectForm", new ProjectFormViewModel());
+            var viewModel = new ProjectFormViewModel() {
+                PageHeader = "Add Project"
+            };
+            return View("ProjectForm", viewModel);
         }
 
         [Authorize]
@@ -38,9 +41,9 @@ namespace DoSmart.Controllers
             };
 
             _context.Projects.Add(newProject);
-            _context.SaveChanges();
+            _context.SaveChanges();            
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Home", new { id = newProject.Id });
         }
     }
 }

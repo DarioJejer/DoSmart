@@ -1,9 +1,9 @@
 ﻿@model  DoSmart.ViewModels.ProjectFormViewModel
 @{
-    ViewBag.Title = "ProjectForm";
+    ViewBag.Title = @Model.PageHeader;
 }
 
-<h2>Project Form</h2>
+<h2>@Model.PageHeader</h2>
 
 @using (Html.BeginForm("Create", "Projects"))
 {

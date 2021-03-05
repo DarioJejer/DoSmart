@@ -1,6 +1,6 @@
 ﻿@model DoSmart.ViewModels.HomeViewModel
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Home";
 }
 
 <section class="content">    
@@ -40,9 +40,7 @@
                             <input id="activity-@activity.Id" type="checkbox">
                             <label for="activity-@activity.Id" class="checkbox-button" data-activity-id="@activity.Id"></label>
                             <h4>@activity.Title</h4>
-                            <button class="importance-icon">
-                                <i class="bi bi-exclamation-circle-fill" style="font-size: 2rem; color: @activity.GetImportanceColor();"></i>
-                            </button>
+                            <i class="bi bi-exclamation-circle-fill importance-icon" style="font-size: 2rem; color: @activity.GetImportanceColor();"></i>
                             <form action="/Activities/Edit/@activity.Id">
                                 <button class="edit-button js-edit-activity" type="submit">
                                     <i class="bi bi-three-dots"></i>
@@ -66,7 +64,7 @@
                     {
                         <li>
                             <input id="activity-@activity.Id" type="checkbox" checked>
-                            <label for="activity-@activity.Id" class="checkbox-button" data-activity-id="@activity.Id" data-activity-done="@activity.Done"></label>
+                            <label for="activity-@activity.Id" class="checkbox-button" data-activity-id="@activity.Id" activity-done="true"></label>
                             <h4>@activity.Title</h4>
                             <button class="delete-button js-delete-activity" data-activity-id="@activity.Id">
                                 <i class="bi bi-x"></i>
@@ -94,15 +92,15 @@
                 })
                     .done(function () {
                         checkbox.parents("li").fadeOut(1000, function () {
-                            if (!checkbox.attr("data-activity-done")) {
-                                checkbox.attr("data-activity-done", true);
+                            if (!checkbox.attr("activity-done")) {
+                                checkbox.attr("activity-done", true);
                                 $(this).prependTo($("#done-activities"));
                                 $(this).children("form").remove();
                                 $(this).children(".importance-icon").remove();
                                 $(this).fadeTo(500, 0.5);
                             }
                             else {
-                                checkbox.attr("data-activity-done", false);
+                                checkbox.removeAttr("activity-done");
                                 $(this).prependTo($("#todo-activities"));
                                 $(this).fadeTo(500, 1);
                             }
@@ -137,7 +135,7 @@
                             });
                             Swal.fire(
                                 'Deleted!',
-                                'Your activity has been deleted.',
+                                'Your Activity has been deleted.',
                                 'success'
                             )
                         })
@@ -171,9 +169,10 @@
                             });
                             Swal.fire(
                                 'Deleted!',
-                                'Your activity has been deleted.',
+                                'Your Project has been deleted.',
                                 'success'
                             )
+                            document.querySelector('.details').remove();
                         })
                         .fail(function () {
                             alert("Something failed!");

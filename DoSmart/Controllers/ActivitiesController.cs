@@ -23,7 +23,7 @@ namespace DoSmart.Controllers
             {
                 ImportanceCategories = _context.ImportanceCategories.ToList(),
                 ProjectId = id,
-                PageHeader = "Add an Activity",
+                PageHeader = "Add Activity",
                 Action = "Create"
             };
 
