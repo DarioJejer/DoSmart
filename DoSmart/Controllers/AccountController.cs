@@ -183,7 +183,7 @@ namespace DoSmart.Controllers
                 {
                         new Activity() { CreatorId = userId, ProjectId = testTheAppProject.Id, Title = "Create many Tasks", Content = "Up to the point where the list gets a new row", ImportanceCategoryId = 2, Date = DateTime.Now},
                         new Activity() { CreatorId = userId, ProjectId = testTheAppProject.Id, Title = "Test the 'delete' operation", Content = "Also test deleting a project", ImportanceCategoryId = 3, Date = DateTime.Now},
-                        new Activity() { CreatorId = userId, ProjectId = testTheAppProject.Id, Title = "Importance icon ======>", Content = "See that tasks are order arcording to this", ImportanceCategoryId = 4, Date = DateTime.Now},
+                        new Activity() { CreatorId = userId, ProjectId = testTheAppProject.Id, Title = "Importance icon ======>", Content = "See that tasks are order arcording to this", ImportanceCategoryId = 3, Date = DateTime.Now},
                         new Activity() { CreatorId = userId, ProjectId = testTheAppProject.Id, Title = "Test editing a Task", Content = "Change it's Importance and see that it goes up in the list", ImportanceCategoryId = 2, Date = DateTime.Now},
                         new Activity() { CreatorId = userId, ProjectId = testTheAppProject.Id, Title = "Resize the window", Content = "And see how the elements in the lists respond", ImportanceCategoryId = 1, Date = DateTime.Now},
                         new Activity() { CreatorId = userId, ProjectId = testTheAppProject.Id, Title = "Test the 'Check' operation", Content = "It can be 'Uncheck' as well", ImportanceCategoryId = 3, Date = DateTime.Now, Done = true},
