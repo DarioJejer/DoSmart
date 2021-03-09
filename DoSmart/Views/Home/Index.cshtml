@@ -8,7 +8,7 @@
 
         <div class="banner-header"><h3>Proyects</h3></div>
 
-        <ul class="proyects_list">
+        <ul class="proyects-list">
             @foreach (var project in Model.Projects)
             {
                 <li>
@@ -30,7 +30,7 @@
         }
         @if (Model.ToDoActivities.Count() != 0 || Model.DoneActivities.Count() != 0)
          {
-             <section class="activities_list">
+             <section class="activities-list">
                 <h2>To do</h2>
                 <hr style="width: 30%; color: black"/>
                 <ul id="todo-activities">
@@ -56,7 +56,7 @@
                 </ul>
             </section>
          
-            <section class="activities_list">
+            <section class="activities-list">
                 <h2>Done</h2>
                 <hr style="width: 30%"/>
                 <ul id="done-activities">

@@ -24,7 +24,7 @@
 
 
 
-.proyects_list {
+.proyects-list {
     display: grid;
     grid-template-rows: auto;
     grid-gap: 1rem;
@@ -33,7 +33,7 @@
     padding: 1rem 0;
 }
 
-    .proyects_list > li {
+    .proyects-list > li {
         box-shadow: 0 0 8px rgba(0, 0, 0, 0.60);
         border-radius: .5rem;
         padding: .5rem;
@@ -44,16 +44,16 @@
 
 
 
-.activities_list {
+.activities-list {
     padding: 2rem;
 }
 
-    .activities_list h2 {
+    .activities-list h2 {
         text-align: center;
         text-transform: uppercase;
     }
 
-    .activities_list > ul {
+    .activities-list > ul {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(350px,1fr));
         grid-gap: 2rem;
@@ -61,7 +61,7 @@
         margin-left: -40px;
     }
 
-        .activities_list > ul > li {
+        .activities-list > ul > li {
             background-color: #808080;
             border: 1px solid #000000;
             border-radius: 1rem;
@@ -69,7 +69,7 @@
             position: relative;
         }
 
-        .activities_list > ul > li > h4 {
+        .activities-list > ul > li > h4 {
             display: inline;
             max-width: 200px;            
         }

@@ -1,5 +1,5 @@
 ﻿
-.proyects_list > li > .delete-button {
+.proyects-list > li > .delete-button {
     position: absolute;
     right: 7px;
     top: 4px;
@@ -9,22 +9,22 @@
     border-color: #000000;
 }
 
-    .proyects_list > li > .delete-button:focus {
+    .proyects-list > li > .delete-button:focus {
         outline: none;
     }
 
-    .proyects_list > li > .delete-button:hover {
+    .proyects-list > li > .delete-button:hover {
         color: black;
     }
 
 
 /*Link to a Project*/
-.proyects_list > li > a {
+.proyects-list > li > a {
     color: white;
     width: 100px;
 }
 
-    .proyects_list > li > a:hover {
+    .proyects-list > li > a:hover {
         text-decoration: none;
         color: #808080;
     }
@@ -106,7 +106,7 @@ input:checked + .checkbox-button::after {
 
 
 
-.activities_list > ul > li .importance-icon {
+.activities-list > ul > li .importance-icon {
     position: absolute;
     right: 73px;
     top: 5px;
@@ -114,13 +114,13 @@ input:checked + .checkbox-button::after {
     border: none;
 }
 
-    .activities_list > ul > li .importance-icon:focus {
+    .activities-list > ul > li .importance-icon:focus {
         outline: none;
     }
 
 
 
-.activities_list > ul > li > form > .edit-button {
+.activities-list > ul > li > form > .edit-button {
     position: absolute;
     right: 40px;
     top: 7px;
@@ -131,11 +131,11 @@ input:checked + .checkbox-button::after {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.60);
 }
 
-    .activities_list > ul > li > form > .edit-button:hover {
+    .activities-list > ul > li > form > .edit-button:hover {
         background-color: #4b4b4b;
     }
 
-    .activities_list > ul > li > form > .edit-button:focus {
+    .activities-list > ul > li > form > .edit-button:focus {
         background-color: black;
         outline: none;
     }
@@ -143,7 +143,7 @@ input:checked + .checkbox-button::after {
 
 
 
-.activities_list > ul > li > .delete-button {
+.activities-list > ul > li > .delete-button {
     position: absolute;
     right: 7px;
     top: 7px;
@@ -154,11 +154,11 @@ input:checked + .checkbox-button::after {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.60);
 }
 
-    .activities_list > ul > li > .delete-button:hover {
+    .activities-list > ul > li > .delete-button:hover {
         background-color: #4b4b4b;
     }
 
-    .activities_list > ul > li > .delete-button:focus {
+    .activities-list > ul > li > .delete-button:focus {
         background-color: black;
         outline: none;
     }
