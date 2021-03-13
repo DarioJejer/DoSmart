@@ -19,6 +19,12 @@ namespace DoSmart.Controllers
         [Authorize]
         public ActionResult Create(int id)
         {
+            var project = _context.Projects.SingleOrDefault(p => p.Id == id);
+            if (project == null)
+                return HttpNotFound();
+            if (project.CreatorId != User.Identity.GetUserId())
+                return new HttpUnauthorizedResult();
+
             var viewModel = new ActivityFormViewModel()
             {
                 ImportanceCategories = _context.ImportanceCategories.ToList(),
