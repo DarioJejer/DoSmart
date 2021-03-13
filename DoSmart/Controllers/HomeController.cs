@@ -18,6 +18,11 @@ namespace DoSmart.Controllers
         public ActionResult Index(int id)
         {
             var userId = User.Identity.GetUserId();
+            var projects = _context.Projects
+                .Where(p => p.CreatorId == userId)
+                .OrderBy(p => p.Date);
+            if (id != 0 && projects.SingleOrDefault(p => p.Id == id) == null)
+                return HttpNotFound();
             var activities = _context.Activities
                 .Include(a => a.Creator)
                 .Include(a => a.ImportanceCategory)
@@ -25,8 +30,6 @@ namespace DoSmart.Controllers
                 .Where(a => a.CreatorId == userId && a.ProjectId == id)
                 .OrderByDescending(a => a.ImportanceCategoryId);
 
-            var projects = _context.Projects
-                .Where(p => p.CreatorId == userId);
 
             var toDoActivities = activities.Where(a => !a.Done).ToList();
             var doneActivities = activities.Where(a => a.Done).ToList();
@@ -35,7 +38,7 @@ namespace DoSmart.Controllers
             {
                 ToDoActivities = toDoActivities,
                 DoneActivities = doneActivities,
-                Projects = projects,
+                Projects = projects.ToList(),
                 SelectedProjectId = id
             };
 
