@@ -95,12 +95,14 @@
                             if (!checkbox.attr("activity-done")) {
                                 checkbox.attr("activity-done", true);
                                 $(this).prependTo($("#done-activities"));
-                                $(this).children("form").remove();
-                                $(this).children(".importance-icon").remove();
+                                $(this).children("form").attr("hidden", true);
+                                $(this).children(".importance-icon").attr("hidden", true);
                                 $(this).fadeTo(500, 0.5);
                             }
                             else {
                                 checkbox.removeAttr("activity-done");
+                                $(this).children("form").removeAttr("hidden");
+                                $(this).children(".importance-icon").removeAttr("hidden");
                                 $(this).prependTo($("#todo-activities"));
                                 $(this).fadeTo(500, 1);
                             }
