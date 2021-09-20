@@ -130,20 +130,20 @@ namespace DoSmart.Controllers
                 var context = new ApplicationDbContext();
                 var testTheAppProject = new Project() { CreatorId = userId, Title = "Test the App", Date = DateTime.Now };
                 context.Projects.Add(testTheAppProject);
-                var reportIssuesProject = new Project() { CreatorId = userId, Title = "Report issues", Date = DateTime.Now };
-                context.Projects.Add(reportIssuesProject);
-                var suggestChangesProject = new Project() { CreatorId = userId, Title = "Suggest changes", Date = DateTime.Now };
-                context.Projects.Add(suggestChangesProject);
+                //var reportIssuesProject = new Project() { CreatorId = userId, Title = "Report issues", Date = DateTime.Now };
+                //context.Projects.Add(reportIssuesProject);
+                //var suggestChangesProject = new Project() { CreatorId = userId, Title = "Suggest changes", Date = DateTime.Now };
+                //context.Projects.Add(suggestChangesProject);
                 context.SaveChanges();
                 var activities = new Activity[]
                 {
                         new Activity() { CreatorId = userId, ProjectId = testTheAppProject.Id, Title = "Test the 'Check' operation", Content = "It can be 'Uncheck' as well", ImportanceCategoryId = 3, Date = DateTime.Now},
                         new Activity() { CreatorId = userId, ProjectId = testTheAppProject.Id, Title = "Resize the window", Content = "And see how the elements in the lists respond", ImportanceCategoryId = 3, Date = DateTime.Now},
                         new Activity() { CreatorId = userId, ProjectId = testTheAppProject.Id, Title = "Test the 'delete' operation", Content = "Also test deleting a project", ImportanceCategoryId = 2, Date = DateTime.Now},
-                        new Activity() { CreatorId = userId, ProjectId = testTheAppProject.Id, Title = "Importance icon ·······>", Content = "See that tasks are ordered according to this", ImportanceCategoryId = 1, Date = DateTime.Now},
+                        new Activity() { CreatorId = userId, ProjectId = testTheAppProject.Id, Title = "Importance icon", Content = "See that tasks are ordered according to this", ImportanceCategoryId = 1, Date = DateTime.Now},
                         new Activity() { CreatorId = userId, ProjectId = testTheAppProject.Id, Title = "Test editing a task", Content = "Change its importance and see that it goes up in the list", ImportanceCategoryId = 3, Date = DateTime.Now,  Done = true},
-                        new Activity() { CreatorId = userId, ProjectId = reportIssuesProject.Id, Title = "Write down found bugs", Content = "Or any incorrect behavior with the app", ImportanceCategoryId = 3, Date = DateTime.Now},
-                        new Activity() { CreatorId = userId, ProjectId = suggestChangesProject.Id, Title = "Suggest changes to the App", Content = "Feel free to express any ideas about new functionalities or changes in the App", ImportanceCategoryId = 3, Date = DateTime.Now}
+                        //new Activity() { CreatorId = userId, ProjectId = reportIssuesProject.Id, Title = "Write down found bugs", Content = "Or any incorrect behavior with the app", ImportanceCategoryId = 3, Date = DateTime.Now},
+                        //new Activity() { CreatorId = userId, ProjectId = suggestChangesProject.Id, Title = "Suggest changes to the App", Content = "Feel free to express any ideas about new functionalities or changes in the App", ImportanceCategoryId = 3, Date = DateTime.Now}
                 };
                 context.Activities.AddRange(activities);
                 context.SaveChanges();
